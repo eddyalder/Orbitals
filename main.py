@@ -20,6 +20,7 @@ win = pygame.display.set_mode((screenWidth,screenHeight), pygame.RESIZABLE)
 win.fill(black)
 pygame.display.set_caption("Orbits")
 clock = pygame.time.Clock()
+planets = pygame.image.load("C:/Users/eddya/Documents/Code Workspace/Orbits/img/planets.png")
 
 #Global variables
 bodyList = []
@@ -39,16 +40,21 @@ class Center(object):
 
 class Orbital(object):
     def __init__(self, x, y, massMult):
-        #Instead of drawing a circle, look for an image to use instead.
-        #self.img = pygame.image.load()
+        #self.surf = pygame.Surface((20, 20))
         self.x = x
         self.y = y
         self.mass = 15 * massMult
         self.radius = self.mass
-        self.color = green
+        self.color = blue
     
     def draw(self):
-        pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
+        #pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
+        
+        #A and B are the location it will be placed
+        #C and D are the cropped part of the image from the top left corner
+        #E and F define the image size
+        #For testing with just a red circle, comment out this line and uncomment line 51
+        win.blit(planets, (self.x, self.y), (25, 5, 120, 120))
 
 class Button(object):
     def __init__(self, x, y, width, height, text =""):
