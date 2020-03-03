@@ -22,6 +22,7 @@ win.fill(black)
 pygame.display.set_caption("Orbits")
 clock = pygame.time.Clock()
 planets = pygame.image.load(directory + r"/img/planets.png")
+pygame.mixer.music.load(directory + r"\sounds\buttonPush.mp3")
 
 #Global variables
 bodyList = []
@@ -105,6 +106,7 @@ while run:
     clock.tick(144)
     for event in pygame.event.get():
         if pygame.mouse.get_pressed()[0]:
+            pygame.mixer.music.play(0)
             clickPos = pygame.mouse.get_pos()
             clickColor = win.get_at(clickPos)
             if but.isOver(clickPos):
