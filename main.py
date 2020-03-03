@@ -49,7 +49,7 @@ class Orbital(object):
     
     def draw(self):
         #pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
-        #no
+        
         #A and B are the location it will be placed
         #C and D are the cropped part of the image from the top left corner
         #E and F define the image size
