@@ -18,7 +18,6 @@ directory = os.getcwd()
 screenWidth = 800
 screenHeight = 800
 win = pygame.display.set_mode((screenWidth,screenHeight), pygame.RESIZABLE)
-win.fill(black)
 pygame.display.set_caption("Orbits")
 clock = pygame.time.Clock()
 planets = pygame.image.load(directory + r"/img/planets.png")
