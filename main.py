@@ -14,13 +14,14 @@ brown = (210,105,30)
 
 #Initial Setup
 os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (300,100)
+directory = os.getcwd()
 screenWidth = 800
 screenHeight = 800
 win = pygame.display.set_mode((screenWidth,screenHeight), pygame.RESIZABLE)
 win.fill(black)
 pygame.display.set_caption("Orbits")
 clock = pygame.time.Clock()
-planets = pygame.image.load("D:\Documents\VSCODE\Orbits\Orbitals\img\planets.png")
+planets = pygame.image.load(directory + r"/img/planets.png")
 
 #Global variables
 bodyList = []
