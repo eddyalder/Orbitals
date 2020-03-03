@@ -20,7 +20,7 @@ win = pygame.display.set_mode((screenWidth,screenHeight), pygame.RESIZABLE)
 win.fill(black)
 pygame.display.set_caption("Orbits")
 clock = pygame.time.Clock()
-planets = pygame.image.load("C:/Users/eddya/Documents/Code Workspace/Orbits/img/planets.png")
+planets = pygame.image.load("D:\Documents\VSCODE\Orbits\Orbitals\img\planets.png")
 
 #Global variables
 bodyList = []
@@ -49,7 +49,7 @@ class Orbital(object):
     
     def draw(self):
         #pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
-        
+        #no
         #A and B are the location it will be placed
         #C and D are the cropped part of the image from the top left corner
         #E and F define the image size
