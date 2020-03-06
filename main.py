@@ -113,7 +113,7 @@ while run:
             if but.isOver(clickPos):
                 clear()
             elif clickColor == black: #Don't allow multiple objects to spawn ontop of each other
-                bodyList.append(Orbital(clickPos[0], clickPos[1], 1)) #Append a planet object to list of bodies
+                bodyList.append(Orbital(clickPos[0] - 60, clickPos[1] - 60, 1)) #Append a planet object to list of bodies
         if event.type == pygame.VIDEORESIZE: #Allow for resizing
             screenHeight = event.h
             screenWidth = event.w
