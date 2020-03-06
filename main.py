@@ -20,7 +20,7 @@ screenHeight = 800
 win = pygame.display.set_mode((screenWidth,screenHeight), pygame.RESIZABLE)
 pygame.display.set_caption("Orbits")
 clock = pygame.time.Clock()
-planets = pygame.image.load(directory + r"/img/planets.png")
+planets = pygame.image.load(directory + r"/img/planets2.png")
 pygame.mixer.music.load(directory + r"\sounds\buttonPush.mp3")
 
 #Global variables
@@ -84,18 +84,20 @@ class Button(object):
 
 but = Button(10, 10, 150, 60, "Reset")
 sun = Center(1)
+origRadius = sun.radius
 
 def clear():
     bodyList.clear()
+    sun.radius = origRadius
     redrawGameWindow()
 
 def redrawGameWindow():
     win.fill(black)
-    but.draw()
     x = 0
     for x in range(len(bodyList)):
         bodyList[x].draw()
     sun.draw()
+    but.draw()
     pygame.display.update()
 
 mouse = pygame.mouse.get_pos()
@@ -112,8 +114,6 @@ while run:
                 clear()
             elif clickColor == black: #Don't allow multiple objects to spawn ontop of each other
                 bodyList.append(Orbital(clickPos[0], clickPos[1], 1)) #Append a planet object to list of bodies
-        if event.type == pygame.QUIT:
-            run = False
         if event.type == pygame.VIDEORESIZE: #Allow for resizing
             screenHeight = event.h
             screenWidth = event.w
@@ -121,4 +121,12 @@ while run:
             #Update the sun's position when the video is resized
             sun.x = int(screenWidth / 2)
             sun.y = int(screenHeight / 2)
+        if event.type == pygame.MOUSEBUTTONDOWN: #Scrolling in and out
+            if event.button == 4: #Mouse wheel down
+                if sun.radius > 0: #If the radius becomes negative it crashes
+                    sun.radius -= 5
+            if event.button == 5: #Mouse wheel up
+                  sun.radius += 5
+        if event.type == pygame.QUIT:
+            run = False
     redrawGameWindow()
