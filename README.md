@@ -12,5 +12,5 @@ Simply click anywhere to generate a planet and that planet will begin its orbit 
 - Set up sprite sheet, so the planet picture that is generated each time is random
  - Clean up sprite sheet transparent background
  - Decide on final size of planets
-- Figure out how to scale the planets down when zooming in or out
-- Clean up spawning so they can't generate on top of each other
+- Figure out how to scale the planets when zooming in or out
+- Clean up planet spawning so they can't generate on top of each other
