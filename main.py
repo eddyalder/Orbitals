@@ -2,6 +2,28 @@ import pygame
 import os
 pygame.init()
 
+#TODO
+#Fix the pictures to make it havbe a transparent background
+    #Be able to rotate through the pictures while placing down planets
+        #Maybe have the planet picture be determined by the user inputted stats
+#Find a better way to create all the colors, purely for aesthetic reasons
+#Figure out how to move the planets using the gravitational law equation
+    #Might be better to use the Turtle lib for movement because you can do circles and shapes easier
+        #Need to see if you can manipulate the shape the object moves in using math
+#Make the reset button look better
+#Find a good png for the sun, maybe make one?
+#Figure out why pygame is underlined red
+#Create a UI for the user to input characteristics of the planet
+    #No idea what UI lib to use, maybe should not have done this in Python
+#Have some way to handle collisions
+    #Does not have to be elegant, can just make the planets explode and dissapear on contact with another planet
+    #Or have the planets bounce off of each other and change the orbits accordingly
+#Cool space background music?
+    #Might be kinda cringe tho
+#Figure out the delay between a click and the sound playing
+    #The sound might actually have a delay in the sound file which I would have to cut out
+    
+
 #Colors
 white = (255,255,255)
 red = (255,0,0)
@@ -15,13 +37,12 @@ brown = (210,105,30)
 #Initial Setup
 os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (300,100)
 directory = os.getcwd()
-screenWidth = 800
-screenHeight = 800
+screenWidth = screenHeight = 800
 win = pygame.display.set_mode((screenWidth,screenHeight), pygame.RESIZABLE)
 pygame.display.set_caption("Orbits")
 clock = pygame.time.Clock()
 planets = pygame.image.load(directory + r"/img/planets.png")
-pygame.mixer.music.load(directory + r"\sounds\buttonPush.mp3")
+pygame.mixer.music.load(directory + r"/sounds/buttonPush.mp3")
 
 #Global variables
 bodyList = []
@@ -105,13 +126,14 @@ while run:
     clock.tick(144)
     for event in pygame.event.get():
         if pygame.mouse.get_pressed()[0]:
-            pygame.mixer.music.play(0)
             clickPos = pygame.mouse.get_pos()
             clickColor = win.get_at(clickPos)
             if but.isOver(clickPos):
+                pygame.mixer.music.play(0)
                 clear()
             elif clickColor == black: #Don't allow multiple objects to spawn ontop of each other
-                bodyList.append(Orbital(clickPos[0], clickPos[1], 1)) #Append a planet object to list of bodies
+                pygame.mixer.music.play(0)
+                bodyList.append(Orbital(clickPos[0] - 50, clickPos[1] - 50, 1)) #Append a planet object to list of bodies
         if event.type == pygame.QUIT:
             run = False
         if event.type == pygame.VIDEORESIZE: #Allow for resizing
